@@ -5,15 +5,13 @@
 | Column               | Type    | Options      |
 | -------------------- | --------| ------------ |
 | nick_mame            | string  | null: false  |
-| mail                 | string  | unique: true |
+| email                | string  | unique: true |
 | encrypted_password   | string  | null: false  |
 | first_name           | string  | null: false  |
 | second_name          | string  | null: false  |
 | first_name(kana)     | string  | null: false  |
 | second_name(kana)    | string  | null: false  |
-| birthday_year        | integer | null: false  |
-| birthday_moon        | integer | null: false  |
-| birthday_th          | integer | null: false  |
+| birthday             | integer | null: false  |
 
 
 ### Association
@@ -23,18 +21,17 @@
 
 ##items テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| item_name        | string     | null: false                    |
-| item_manual      | text       | null: false                    |
-| cutegory         | string     | null: false                    |
-| item_joutai      | string     | null: false                    |
-| send_money_hutan | string     | null: false                    |
-| send_tiiki       | string     | null: false                    |
-| send_nissuu      | string     | null: false                    |
-| kakaku           | string     | null: false                    |
-| user             | references | null: false, foreign_key: true |
-| buy              | references | null: false, foreign_key: true |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| item_name            | string     | null: false                    |
+| item_manual          | text       | null: false                    |
+| cutegory_id          | integer    | null: false                    |
+| item_condition_id    | integer    | null: false                    |
+| send_money_burden_id | integer    | null: false                    |
+| send_area_id         | integer    | null: false                    |
+| send_days_id         | integer    | null: false                    |
+| price                | integer    | null: false                    |
+| user                 | references | null: false, foreign_key: true |
 
 ### Association
 
