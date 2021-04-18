@@ -25,7 +25,7 @@
 | -------------------- | ---------- | ------------------------------ |
 | item_name            | string     | null: false                    |
 | item_manual          | text       | null: false                    |
-| cutegory_id          | integer    | null: false                    |
+| category_id          | integer    | null: false                    |
 | item_condition_id    | integer    | null: false                    |
 | send_money_burden_id | integer    | null: false                    |
 | send_area_id         | integer    | null: false                    |
@@ -59,7 +59,7 @@
 | send_area_id   | integer    | null: false                    |
 | city_town      | string     | null: false                    |
 | address        | string     | null: false                    |
-| building_name  | string     | unique: true                   |
+| building_name  | string     |                                |
 | tell_number    | string     | null: false                    |
 | buy            | references | null: false, foreign_key: true |
 
