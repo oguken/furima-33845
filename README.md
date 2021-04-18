@@ -2,16 +2,16 @@
 
 ##users テーブル
 
-| Column               | Type    | Options      |
-| -------------------- | --------| ------------ |
-| nick_mame            | string  | null: false  |
-| email                | string  | unique: true |
-| encrypted_password   | string  | null: false  |
-| first_name           | string  | null: false  |
-| second_name          | string  | null: false  |
-| first_name(kana)     | string  | null: false  |
-| second_name(kana)    | string  | null: false  |
-| birthday             | date    | null: false  |
+| Column               | Type    | Options                   |
+| -------------------- | --------| --------------------------|
+| nick_mame            | string  | null: false               |
+| email                | string  | null: false, unique: true |
+| encrypted_password   | string  | null: false               |
+| first_name           | string  | null: false               |
+| second_name          | string  | null: false               |
+| first_name(kana)     | string  | null: false               |
+| second_name(kana)    | string  | null: false               |
+| birthday             | date    | null: false               |
 
 
 ### Association
@@ -66,4 +66,4 @@
 
 ### Association
 
-- belong_to :buys
+- belong_to :buy
