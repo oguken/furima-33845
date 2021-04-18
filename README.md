@@ -11,7 +11,7 @@
 | second_name          | string  | null: false  |
 | first_name(kana)     | string  | null: false  |
 | second_name(kana)    | string  | null: false  |
-| birthday             | integer | null: false  |
+| birthday             | date    | null: false  |
 
 
 ### Association
@@ -35,8 +35,8 @@
 
 ### Association
 
-- belong_to :users
-- has_one   :buys
+- belong_to :user
+- has_one   :buy
 
 ##buys テーブル
 
@@ -47,16 +47,16 @@
 
 ### Association
 
-- belong_to :users
-- belong_to :items
-- has_one   :sends
+- belong_to :user
+- belong_to :item
+- has_one   :send
 
 ##sends テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | postal_code    | string     | null: false                    |
-| prefecture_id  | integer    | null: false                    |
+| send_area_id   | integer    | null: false                    |
 | city_town      | string     | null: false                    |
 | address        | string     | null: false                    |
 | building_name  | string     | unique: true                   |
