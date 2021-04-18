@@ -2,12 +2,19 @@
 
 ##users テーブル
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| name       | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| profile    | text   | null: false |
+| Column               | Type    | Options      |
+| -------------------- | --------| ------------ |
+| nick_mame            | string  | null: false  |
+| mail                 | string  | unique: true |
+| encrypted_password   | string  | null: false  |
+| first_name           | string  | null: false  |
+| second_name          | string  | null: false  |
+| first_name(kana)     | string  | null: false  |
+| second_name(kana)    | string  | null: false  |
+| birthday_year        | integer | null: false  |
+| birthday_moon        | integer | null: false  |
+| birthday_th          | integer | null: false  |
+
 
 ### Association
 
@@ -18,7 +25,7 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| item_name        | text       | null: false                    |
+| item_name        | string     | null: false                    |
 | item_manual      | text       | null: false                    |
 | cutegory         | string     | null: false                    |
 | item_joutai      | string     | null: false                    |
@@ -32,36 +39,34 @@
 ### Association
 
 - belong_to :users
-- belong_to :items
+- has_one   :buys
 
 ##buys テーブル
 
 | Column            | Type       | Options                        |
 | ------------------| ---------- | ------------------------------ |
-| user_item_name    | string     | unique: true                   |
 | user              | references | null: false, foreign_key: true |
 | item              | references | null: false, foreign_key: true |
-| send              | references | null: false, foreign_key: true |
 
 ### Association
 
 - belong_to :users
-- has_one   :items
-- belong_to :sends
+- belong_to :items
+- has_one   :sends
 
 ##sends テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| yuubin_number  | string     | null: false                    |
-| from_town      | string     | null: false                    |
-| from_mura      | string     | null: false                    |
-| banti          | string     | null: false                    |
-| tatemono_name  | string     | null: false                    |
+| postal_code    | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| city_town      | string     | null: false                    |
+| address        | string     | null: false                    |
+| building_name  | string     | unique: true                   |
 | tell_number    | string     | null: false                    |
 | buy            | references | null: false, foreign_key: true |
 
 
 ### Association
 
-- has_one  :buys
+- belong_to :buys
