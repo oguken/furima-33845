@@ -21,15 +21,46 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "Password can't be blank"
     end
-    it '名前（全角）が空では登録できない' do
-      @user.email = ''
+
+    it '上の名前（全角）が空では登録できない' do
+      @user.first_name = ''
       @user.valid?
       expect(@user.errors.full_messages).to include "First name can't be blank"
     end
-    it '名前カナ（全角）が空では登録できない' do
-      @user.email = ''
+    it '上の名前（全角）が漢字・平仮名・カタカナ以外では登録できないこと' do
+      @user.first_name = 'a'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Birthday can't be blank"
+    end
+    it '下の名前（全角）が空では登録できない' do
+      @user.second_name = ''
       @user.valid?
       expect(@user.errors.full_messages).to include "Second name can't be blank"
+    end
+    it '下の名前（全角）が漢字・平仮名・カタカナ以外では登録できないこと' do
+      @user.second_name = 'a'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Birthday can't be blank"
+    end
+    it '上の名前カナ（全角）が空では登録できない' do
+      @user.first_name_kana = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include "First name kana can't be blank"
+    end
+    it '上の名前カナ（全角）が漢字・平仮名・カタカナ以外では登録できないこと' do
+      @user.first_name_kana = 'a'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Birthday can't be blank"
+    end
+    it '下の名前カナ（全角）が空では登録できない' do
+      @user.second_name_kana = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Second name kana can't be blank"
+    end
+    it '下の名前カナ（全角）が漢字・平仮名・カタカナ以外では登録できないこと' do
+      @user.second_name_kana = 'a'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Birthday can't be blank"
     end
     it 'birthdayが空では登録できない' do
       @user.email = ''
