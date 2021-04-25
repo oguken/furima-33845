@@ -9,7 +9,8 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context'新規登録できるとき' do
-      it 'nicknameが6文字以下であれば登録できる' do
+      it '全ての値が正しく入力できていれば保存できる' do
+        expect(@user).to be_valid
       end
     end
 
@@ -106,7 +107,7 @@ RSpec.describe User, type: :model do
     it 'birthdayが空では登録できない' do
       @user.email = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include "Birthday can't be blank"
+      expect(@user.errors.full_messages).to include "Email can't be blank"
     end
   end
   end
