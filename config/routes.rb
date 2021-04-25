@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   #get 'images/index'
   devise_for :users
   
-  root to: "items#index"
-
-  resources :users, only: :index
+  
   
 end
