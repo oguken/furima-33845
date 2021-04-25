@@ -5,7 +5,15 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
+
+
   describe 'ユーザー新規登録' do
+    context'新規登録できるとき' do
+      it 'nicknameが6文字以下であれば登録できる' do
+      end
+    end
+
+    context'新規登録できないとき' do
     it 'nick_nameが空では登録できない' do
       @user.nick_name = ''
       @user.valid?
@@ -42,18 +50,17 @@ RSpec.describe User, type: :model do
     end
 
     it 'パスワードは、確認用を含めて2回入力すること' do
-      @user.password = '0a'
-      @user.password_confirmation = '0a'
+      @user.password = '00000a'
+      @user.password_confirmation = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include  "Birthday can't be blank"
+      expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
     end
     it 'パスワードとパスワード（確認用）は、値の一致が必須であること' do
-      @user.password = '0a'
-      @user.password_confirmation = '0a'
+      @user.password = '00000a'
+      @user.password_confirmation = '00000b'
       @user.valid?
-      expect(@user.errors.full_messages).to include  "Birthday can't be blank"
+      expect(@user.errors.full_messages).to include "Password confirmation doesn't match Password"
     end
-
 
 
     it '上の名前（全角）が空では登録できない' do
@@ -101,6 +108,7 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include "Birthday can't be blank"
     end
+  end
   end
  end
   
