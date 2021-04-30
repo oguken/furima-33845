@@ -27,12 +27,12 @@ RSpec.describe Item, type: :model do
 
 
       it 'categoryが空では登録できない' do
-        @item.category_id = ''
+        @item.category_id = ""
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category can't be blank"
+        expect(@item.errors.full_messages).to include "Category is not a number"
       end
-      it 'categoryが1以外では登録できない' do
-        @item.category_id = '1'
+      it 'categoryが1では登録できない' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category must be other than 1"
       end
@@ -40,10 +40,10 @@ RSpec.describe Item, type: :model do
       it 'item_conditionが空では登録できない' do
         @item.item_condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Item condition can't be blank"
+        expect(@item.errors.full_messages).to include "Item condition is not a number"
       end
-      it 'item_conditionが1以外では登録できない' do
-        @item.item_condition_id = '1'
+      it 'item_conditionが1では登録できない' do
+        @item.item_condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Item condition must be other than 1"
       end
@@ -51,10 +51,10 @@ RSpec.describe Item, type: :model do
       it 'send_money_burdenが空では登録できない' do
         @item.send_money_burden_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Send money burden can't be blank"
+        expect(@item.errors.full_messages).to include "Send money burden is not a number"
       end
-      it 'send_money_burdenが1以外では登録できない' do
-        @item.send_money_burden_id = '1'
+      it 'send_money_burdenが1では登録できない' do
+        @item.send_money_burden_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Send money burden must be other than 1"
       end
@@ -62,10 +62,10 @@ RSpec.describe Item, type: :model do
       it 'send_areaが空では登録できない' do
         @item.send_area_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Send area can't be blank"
+        expect(@item.errors.full_messages).to include "Send area is not a number"
       end
-      it 'send_areaが1以外では登録できない' do
-        @item.send_area_id = '1'
+      it 'send_areaが1では登録できない' do
+        @item.send_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Send area must be other than 1"
       end
@@ -73,10 +73,10 @@ RSpec.describe Item, type: :model do
       it 'send_daysが空では登録できない' do
         @item.send_days_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Send days can't be blank"
+        expect(@item.errors.full_messages).to include "Send days is not a number"
       end
-      it 'send_daysは1以外では登録できない' do
-        @item.send_days_id = '1'
+      it 'send_daysが1では登録できない' do
+        @item.send_days_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Send days must be other than 1"
       end
@@ -103,14 +103,25 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Price is out of setting range"
       end
       it 'priceは299円以下では登録できない' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include "Price is out of setting range"
       end
       it 'priceは10,000,000以上では登録できない' do
-        @item.price = '10,000,000'
+        @item.price = 10,000,000
         @item.valid?
         expect(@item.errors.full_messages).to include "Price is out of setting range"
+      end
+
+      it 'item_imageが空では登録できない' do
+        @item.item_image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Item image can't be blank"
+      end
+      it 'userが紐付いていないと登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "User must exist"
       end
     end
   end

@@ -5,9 +5,9 @@ window.addEventListener('load', () => {
 
 
     const addTaxDom = document.getElementById("add-tax-price");
-    addTaxDom.innerHTML = Math.floor(inputValue * 0.1);
-
+    addTaxDom.innerHTML = Math.floor(inputValue * 0.1).toLocaleString();
 
     const pddTaxDom = document.getElementById("profit");
-    pddTaxDom.innerHTML = Math.floor(inputValue - (inputValue * 0.1));
+    pddTaxDom.innerHTML = Math.ceil(inputValue * 0.9).toLocaleString();
+    
   })})
