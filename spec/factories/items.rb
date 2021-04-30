@@ -8,7 +8,7 @@ FactoryBot.define do
     send_money_burden_id     {2}
     send_area_id             {2}
     send_days_id             {2}
-    price                 {'300~9999999'}
+    price                    {350}
     
     after(:build) do |item|
       item.item_image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')

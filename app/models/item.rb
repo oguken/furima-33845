@@ -9,19 +9,25 @@ class Item < ApplicationRecord
 
   has_one_attached :item_image
 
-  validates :item_name,            presence: true
-  validates :item_manual,          presence: true
-  validates :category_id,          presence: true
-  validates :item_condition_id,    presence: true
-  validates :send_money_burden_id, presence: true
-  validates :send_area_id,         presence: true
-  validates :send_days_id,         presence: true
-  validates :price,                presence: true
-  validates :item_image,           presence: true
+  with_options presence: true do
+  validates :item_name
+  validates :item_manual
+  validates :category_id
+  validates :item_condition_id
+  validates :send_money_burden_id
+  validates :send_area_id
+  validates :send_days_id
+  validates :price
+  validates :item_image
+  end
 
-  validates :category_id, numericality: { other_than: 1 }
-  validates :item_condition_id, numericality: { other_than: 1 }
-  validates :send_money_burden_id, numericality: { other_than: 1 }
-  validates :send_area_id, numericality: { other_than: 1 } 
-  validates :send_days_id, numericality: { other_than: 1 } 
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}  
+
+  with_options numericality: { other_than: 1 }  do
+  validates :category_id
+  validates :item_condition_id
+  validates :send_money_burden_id
+  validates :send_area_id
+  validates :send_days_id
+  end
 end
