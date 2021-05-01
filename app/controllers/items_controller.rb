@@ -1,10 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
-  def index
-     #@items = Item.all
-  end
-
   def new
     @item = Item.new
   end
@@ -17,6 +13,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def index
+    @items = Item.all
+ end
 
   private
   def item_params
