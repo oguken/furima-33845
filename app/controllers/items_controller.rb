@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :move_to_index, only: [:edit] 
+  before_action :move_to_index, only: [:edit, :update] 
 
   def new
     @item = Item.new
@@ -24,9 +24,6 @@ class ItemsController < ApplicationController
  end
 
  def edit
-  #if current_user.id == @item.usergned_in? #出品者ではない 
-    #redirect_to action: :index #トップページ
-  #end
 end
 
 def update
