@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
  end
 
  def edit
-end
+ end
 
 def update
   if @item.update(item_params)
@@ -47,7 +47,7 @@ def move_to_index
 
   def set_item
       @item = Item.find(params[:id])
-    end
+  end
 end
 
 
