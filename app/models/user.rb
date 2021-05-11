@@ -18,5 +18,8 @@ class User < ApplicationRecord
       validates :nick_name
       validates :birthday
       end
+      has_many :items
+      has_many :buys
+
 end
 
