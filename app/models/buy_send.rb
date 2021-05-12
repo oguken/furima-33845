@@ -16,6 +16,6 @@ class BuySend
 
   def save
     buys = Buy.create(user_id: user_id, item_id: item_id)
-    addresses = Address.create(postal_code: postal_code, send_area_id: send_area_id, city_town: city_town, address: address, building_name: building_name, tell_number: tell_number)
+    Address.create(postal_code: postal_code, send_area_id: send_area_id, city_town: city_town, address: address, building_name: building_name, tell_number: tell_number, buy_id: buys.id)
   end
 end

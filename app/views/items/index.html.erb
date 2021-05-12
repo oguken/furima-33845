@@ -136,9 +136,15 @@
 
 
           <%# 商品が売れていればsold outを表示しましょう %>
+          <% if item.buy.present? %> 
+
+          <%# present?メソッドを使いましょう %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
+
+          <% end %>  
+
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
