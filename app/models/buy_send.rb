@@ -5,14 +5,25 @@ class BuySend
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postal_code
     validates :send_area_id
     validates :city_town
     validates :address
     validates :building_name
-    validates :tell_number
-    validates :token, presence: true
+    validates :token
   end
+
+  with_options presence: true, format: { with: /\A\d{3}[-]\d{4}\z/, message: '郵便番号（ハイフンあり7桁)' } do
+    validates :postal_code            
+  end
+
+  with_options presence: true, format: { with: /\A\d{11}\z/, message: '携帯番号(ハイフンなし11桁)' } do
+    validates :tell_number            
+  end
+
+  with_options numericality: { other_than: 1 }  do
+    validates :send_area_id
+  end
+
 
   def save
     buys = Buy.create(user_id: user_id, item_id: item_id)
