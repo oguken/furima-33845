@@ -66,13 +66,13 @@ RSpec.describe BuySend, type: :model do
       it 'tell_numberが数字以外が混じっていると購入できない' do
         @buy_send.tell_number =  '0aあ'
         @buy_send.valid?
-        expect(@buy_send.errors.full_messages).to include "Tell number 携帯番号(ハイフンなし11桁)"
+        expect(@buy_send.errors.full_messages).to include "Tell number 携帯番号(ハイフンなし10桁or11桁)"
       end
 
       it 'tell_numberが11桁を超えると購入できない' do
         @buy_send.tell_number =  '090123456789'
         @buy_send.valid?
-        expect(@buy_send.errors.full_messages).to include "Tell number 携帯番号(ハイフンなし11桁)"
+        expect(@buy_send.errors.full_messages).to include "Tell number 携帯番号(ハイフンなし10桁or11桁)"
       end
 
 

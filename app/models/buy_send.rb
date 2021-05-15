@@ -10,7 +10,7 @@ class BuySend
     validates :address
     validates :token
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: '郵便番号（ハイフンあり7桁)' }
-    validates :tell_number, format: { with: /\A\d{11}\z/, message: '携帯番号(ハイフンなし11桁)' } 
+    validates :tell_number, format: { with: /\A\d{10,11}\z/, message:'携帯番号(ハイフンなし10桁or11桁)' } 
   end
 
 
