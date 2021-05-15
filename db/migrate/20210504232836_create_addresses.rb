@@ -5,7 +5,7 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
       t.integer    :send_area_id,  null: false 
       t.string     :city_town,     null: false 
       t.string     :address,       null: false 
-      t.string     :building_name, null: false 
+      t.string     :building_name
       t.string     :tell_number,   null: false 
       t.references :buy,           foreign_key: true
 

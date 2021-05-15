@@ -8,18 +8,14 @@ class BuySend
     validates :send_area_id
     validates :city_town
     validates :address
-    validates :building_name
     validates :token
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: '郵便番号（ハイフンあり7桁)' } do      
+    end
+    validates :tell_number, format: { with: /\A\d{11}\z/, message: '携帯番号(ハイフンなし11桁)' } do
+    end
   end
 
-  with_options presence: true, format: { with: /\A\d{3}[-]\d{4}\z/, message: '郵便番号（ハイフンあり7桁)' } do
-    validates :postal_code            
-  end
-
-  with_options presence: true, format: { with: /\A\d{11}\z/, message: '携帯番号(ハイフンなし11桁)' } do
-    validates :tell_number            
-  end
-
+  
   with_options numericality: { other_than: 1 }  do
     validates :send_area_id
   end

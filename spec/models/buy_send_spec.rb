@@ -11,10 +11,12 @@ RSpec.describe BuySend, type: :model do
 
   describe '購入内容の確認' do
     context'購入内容を確認できるとき' do
+      context'建物名が抜けていても登録できること' do
       it '全ての値が正しく入力できていれば保存できる' do
         expect(@buy_send).to be_valid
       end
     end
+  end
 
     context'購入内容の確認ができないとき' do
       it 'postal_codeが空では登録できない' do
