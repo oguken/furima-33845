@@ -17,16 +17,13 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.order("created_at ASC")
+    @items = Item.all.order("created_at DESC")
  end
 
  def show
  end
 
  def edit
-    if current_user.id == @item.user.id || @item.buy.present?     
-        redirect_to root_path
-    end
 end
 
 def update
@@ -48,14 +45,13 @@ def item_params
 end
 
 def move_to_index
-    unless current_user.id == @item.user.id 
+    unless current_user.id == @item.user.id && @item.buy == nil 
       redirect_to root_path
     end
   end
-
+  
   def set_item
-      @item = Item.find(params[:id])
-    end
+    @item = Item.find(params[:id])
+  end
 end
-
 
